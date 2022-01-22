@@ -1,0 +1,52 @@
+#app {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr; 
+
+    #image-type {
+        float: right;
+        margin-right: 2em;
+    }
+
+    #image-controls {
+        padding-left: 2em;
+
+        div {
+            margin-bottom: 1em;
+        };
+    }
+
+    #loading, #sg-loading {
+        display: none;
+    }
+
+    #media {
+      min-width: 512px;
+
+      img {
+        margin: 0 auto;
+        max-width: 1024px;
+      }
+    }
+
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #123456;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+      
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+}
