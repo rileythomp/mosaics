@@ -1,54 +1,56 @@
 <div id='app'>
-	<div>
-		<select name="" id="image-type" (change)="changeImageControls()">
-			<option value="" disabled>Select an image type</option>
-			<option value="stainedglass2">Stained Glass</option>
-			<option value="quadimage">Quad Image</option>
-			<option value="circles">Circle Image</option>
-			<option value="voronoi" selected>Voronoi</option>
-			<option value="moving">Moving Voronoi</option>
-			<option value="fractal">Fractal</option>
-			<option value="htree">H Tree</option>
-			<option value="tsquare">T Square</option>
-		</select>
+	<div  class='app-panel'>
+		<div id='image-select'>
+			<span>Select an image type: </span>
+			<select name="" id="image-type" (change)="changeImageControls()">
+				<option value="stainedglass2">Stained Glass</option>
+				<option value="quadimage">Quad Image</option>
+				<option value="circles">Circle Image</option>
+				<option value="voronoi" selected>Voronoi</option>
+				<option value="moving">Moving Voronoi</option>
+				<option value="fractal">Fractal</option>
+				<option value="htree">H Tree</option>
+				<option value="tsquare">T Square</option>
+			</select>
+		</div>
 	</div>
 
-	<div>
+	<div class='app-panel'>
 		<div id='media'>
 			<img id='image' src="" alt="" style='border: 1px solid black'> 
 			<video controls autoplay loop id='video' type='video/mp4' src="" alt="" style='border: 1px solid black'></video>
 		</div>
 	</div>
 
-	<div id='image-controls'>
+	<div id='image-controls'  class='app-panel'>
 		<div class='image-control' id='voronoi-controls'>
-			<div>
+			<div class='control'>
 				<span>Select color gradient: </span>
 				<input id='color1' type="color" value='#123456' (change)="getVoronoiImage()">
-				<span> to </span>
+				<p style='display: inline'> to </p>
 				<input id='color2' type="color" value='#ffffff' (change)="getVoronoiImage()">
 			</div>
 		
-			<div>
+			<div class='control'>
+				<span>Distance Algorithm: </span>
 				<select id='distance-algo' (change)="getVoronoiImage()">
-					<option disabled value="">Select a distance algorithm</option>
 					<option selected value='euclidean'>Euclidean</option>
 					<option value='manhattan'>Manhattan</option>
 					<option value='chebyshev'>Chebyshev</option>
 				</select>
 			</div>
       
-			<div>
-				<p style='display: inline'>Splits (1 - 500): </p>
+			<div class='control'>
+				<span>Splits (1 - 500): </span>
 				<input id="regions" type="number" min="1" max = "500" value="100" (change)="getVoronoiImage()">
 			</div>
 			
-			<div>
+			<div class='control'>
+				<span>Lines: </span>
 				<input id="border-lines" checked type="checkbox" (change)="lines = !lines; getVoronoiImage()">
-				<span>{{ lines ? 'Lines' : 'None' }}</span>
 			</div>
 		
-			<div>
+			<div class='control'>
 				<button (click)="getVoronoiImage()">Generate</button>
 			</div>
 
@@ -66,28 +68,28 @@
 		</div>
 
 		<div class='image-control' id='input-controls'>
-			<div>
+			<div class='control'>
+				<span>Select an image: </span>
+				<input id='image-file' type="file" accept=".png, .jpg, .jpeg" (change)="getStainglassImage()">
+			</div>
+			
+			<div class='control'>
+				<span>Distance Algorithm: </span>
 				<select id='sg-dist-algo' (change)="getStainglassImage()">
-					<option disabled value="">Select a distance algorithm</option>
 					<option selected value='euclidean'>Euclidean</option>
 					<option value='manhattan'>Manhattan</option>
 					<option value='chebyshev'>Chebyshev</option>
 				</select>
 			</div>
 
-			<div>
-				<p style='display: inline'>Splits (1 - 500): </p>
+			<div class='control'>
+				<span>Splits (1 - 500): </span>
 				<input id="sites" type="number" min="1" max="500" value="100" (change)="getStainglassImage()">
 			</div>
 
-			<div>
+			<div class='control'>
+				<span>Lines: </span>
 				<input id="border-lines" checked type="checkbox" (change)="lines = !lines; getStainglassImage()">
-				<span>{{ lines ? 'Lines' : 'None' }}</span>
-			</div>
-
-			<div>
-				<span>Select an image</span><br>
-				<input id='image-file' type="file" accept=".png" (change)="getStainglassImage()">
 			</div>
 			
 			<div>

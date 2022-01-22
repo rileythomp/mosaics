@@ -31,33 +31,33 @@ export class AppComponent implements OnInit{
 	ngOnInit() {
 		document.getElementById('video').style.display = 'none'
 		this.hideControls();
-		this.getVoronoiImage()
-		document.getElementById('voronoi-controls').style.display = 'block'
+		this.getVoronoiImage('voronoi')
+		document.getElementById('voronoi-controls').style.display = 'inline-block'
 	}
 
 	changeImageControls() {
 		this.hideControls();
 		let ctrl = (<HTMLSelectElement>document.getElementById('image-type')).value
 		if (ctrl == 'voronoi' || ctrl == 'moving') {
-			document.getElementById('voronoi-controls').style.display = 'block'
+			document.getElementById('voronoi-controls').style.display = 'inline-block'
 			this.getVoronoiImage()
 		}
 		else if (ctrl == 'fractal' || ctrl == 'htree' || ctrl == 'tsquare') {
-			document.getElementById('fractal-controls').style.display = 'block'
+			document.getElementById('fractal-controls').style.display = 'inline-block'
 			this.getFractalImage()
 		}
 		else if (ctrl == 'stainedglass2' || ctrl == 'quadimage' || ctrl == 'circles') {
-			document.getElementById('input-controls').style.display = 'block'
+			document.getElementById('input-controls').style.display = 'inline-block'
 			this.getStainglassImage()
 		}
 	}
 
-	getVoronoiImage() {
+	getVoronoiImage(type?: string) {
 		this.distance = (<HTMLSelectElement>document.getElementById('distance-algo')).value
 		this.sites = Number((<HTMLInputElement>document.getElementById('regions')).value)
 		this.color1 = (<HTMLInputElement>document.getElementById('color1')).value.substring(1)
 		this.color2 = (<HTMLInputElement>document.getElementById('color2')).value.substring(1)
-		this.voronoi = (<HTMLSelectElement>document.getElementById('image-type')).value
+		this.voronoi = type || (<HTMLSelectElement>document.getElementById('image-type')).value || 'voronoi'
 		if (this.voronoi == 'moving') {
 			document.getElementById('loading').style.display = 'block'
 		}

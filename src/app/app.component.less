@@ -2,18 +2,79 @@
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr; 
+    margin-top: 5em;
 
-    #image-type {
-        float: right;
-        margin-right: 2em;
+    span {
+      font-size: 1.25em;
     }
 
-    #image-controls {
-        padding-left: 2em;
+	button {
+		padding: 0.25em 0.5em;
+	}
 
+	select {
+		padding: 0.25em;
+	}
+
+	input[type=number] {
+		padding: 0.25m;
+	}
+
+	input[type=checkbox] {
+		zoom: 1.5;
+		transform: scale(1.5);
+		transform-origin: 0 0;
+	}
+
+	.app-panel {
+		border: 1px solid white;
+		margin: 0 1em;
+		padding: 2em;
+	}
+
+    .image-control {
+      display: inline-block;
+    }
+
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #123456;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+        /* Safari */
+        @-webkit-keyframes spin {
+			0% { -webkit-transform: rotate(0deg); }
+			100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+      	}
+    }
+
+  #image-select {
+    float: right;
+  }
+
+	// #image-type {
+  //   float: right;
+  // }
+
+    #image-controls {
         div {
             margin-bottom: 1em;
-        };
+        }
+
+        .control {
+          span {
+            min-width: 10em;
+            display: inline-block;
+          }
+        }
     }
 
     #loading, #sg-loading {
@@ -25,28 +86,8 @@
 
       img {
         margin: 0 auto;
-        max-width: 1024px;
+        max-width: 800px;
+		max-height: 800px;
       }
     }
-
-    .loader {
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid #123456;
-        width: 20px;
-        height: 20px;
-        -webkit-animation: spin 2s linear infinite; /* Safari */
-        animation: spin 2s linear infinite;
-      }
-      
-      /* Safari */
-      @-webkit-keyframes spin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
-      }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
 }
