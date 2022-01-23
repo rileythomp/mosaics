@@ -6,7 +6,7 @@ import { Observable } from 'rxjs'
   providedIn: 'root'
 })
 export class ImagesService {
-	private readonly host: string = 'http://localhost:8090'
+	private readonly host: string = 'https://voronoi-api.herokuapp.com'
 
 	private readonly httpOptions = {
 		headers: new HttpHeaders({

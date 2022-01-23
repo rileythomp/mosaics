@@ -47,7 +47,7 @@
 			
 			<div class='control'>
 				<span>Lines: </span>
-				<input id="border-lines" checked type="checkbox" (change)="lines = !lines; getVoronoiImage()">
+				<input id="lines" checked type="checkbox" (change)="getVoronoiImage()">
 			</div>
 		
 			<div class='control'>
@@ -89,7 +89,7 @@
 
 			<div class='control'>
 				<span>Lines: </span>
-				<input id="border-lines" checked type="checkbox" (change)="lines = !lines; getStainglassImage()">
+				<input id="sg-lines" checked type="checkbox" (change)="getStainglassImage()">
 			</div>
 			
 			<div>

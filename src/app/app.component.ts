@@ -57,6 +57,7 @@ export class AppComponent implements OnInit{
 		this.sites = Number((<HTMLInputElement>document.getElementById('regions')).value)
 		this.color1 = (<HTMLInputElement>document.getElementById('color1')).value.substring(1)
 		this.color2 = (<HTMLInputElement>document.getElementById('color2')).value.substring(1)
+		this.lines = (<HTMLInputElement>document.getElementById('lines')).checked
 		this.voronoi = type || (<HTMLSelectElement>document.getElementById('image-type')).value || 'voronoi'
 		if (this.voronoi == 'moving') {
 			document.getElementById('loading').style.display = 'block'
@@ -88,6 +89,7 @@ export class AppComponent implements OnInit{
 		}
 		this.distance = (<HTMLSelectElement>document.getElementById('sg-dist-algo')).value
 		this.sites = Number((<HTMLInputElement>document.getElementById('sites')).value)
+		this.lines = (<HTMLInputElement>document.getElementById('sg-lines')).checked
 		let stainglass = (<HTMLSelectElement>document.getElementById('image-type')).value
 		document.getElementById('sg-loading').style.display = 'block'
 		this.imageService.getStainglassImage(stainglass, this.lines, this.sites, this.distance, file).subscribe((res) => {
