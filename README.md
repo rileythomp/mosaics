@@ -1,10 +1,10 @@
 # stained-glass
 
-Generate stained glass looking images and other effects.
+Generate stained glass looking images and other effects. Implementations and more explanation is [here](https://github.com/rileythomp/voronoi).
 
 ![screenshot](screenshot.png)
 
-Must have Angular installed to run and be running the Go [server](https://gitlab.com/rileythomp14/voronoi).
+Must have Angular installed to run and be running the Go [server](https://github.com/rileythomp/voronoi).
 
 `$ git clone https://github.com/rileythomp/stained-glass.git`
 
