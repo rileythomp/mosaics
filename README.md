@@ -1,6 +1,6 @@
-# stained-glass
+# mosaics
 
-Generate stained glass looking images and other effects. Implementations and more explanation is [here](https://github.com/rileythomp/voronoi).
+Generate mosaic/stained glass looking images and other effects. Implementations and more explanation is [here](https://github.com/rileythomp/voronoi).
 
 https://stainglass.herokuapp.com
 
