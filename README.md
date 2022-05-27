@@ -8,9 +8,9 @@ https://stainglass.herokuapp.com
 
 Must have Angular installed to run and be running the Go [server](https://github.com/rileythomp/voronoi).
 
-`$ git clone https://github.com/rileythomp/stained-glass.git`
+`$ git clone https://github.com/rileythomp/mosaics.git`
 
-`$ cd stained-glass`
+`$ cd mosaics`
 
 `$ npm i`
 
