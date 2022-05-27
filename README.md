@@ -2,7 +2,7 @@
 
 Generate mosaic/stained glass looking images and other effects. Implementations and more explanation is [here](https://github.com/rileythomp/voronoi).
 
-https://stainglass.herokuapp.com
+https://mosaics.netlify.app
 
 ![screenshot](screenshot.png)
 
