@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
 		document.getElementById('video').style.display = 'none'
 		this.hideControls();
 		this.getVoronoiImage('voronoi')
-		document.getElementById('voronoi-controls').style.display = 'inline-block'
+		document.getElementById('input-controls').style.display = 'inline-block'
 	}
 
 	changeImageControls() {
