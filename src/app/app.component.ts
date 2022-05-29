@@ -19,19 +19,19 @@ export class AppComponent implements OnInit{
 	]
 	sites = 100;
 	lines = true;
-	voronoi = 'voronoi'
+	voronoi = 'voronoi';
 
 	splits = 3;
-	fractal = 'fractal'
+	fractal = 'fractal';
 
-	imgWarning = ''
+	imgWarning = '';
 
 	constructor(private imageService: ImagesService) {}
 
 	ngOnInit() {
 		document.getElementById('video').style.display = 'none'
 		this.hideControls();
-		this.getVoronoiImage('voronoi')
+		this.getStainglassImage()
 		document.getElementById('input-controls').style.display = 'inline-block'
 	}
 
@@ -85,11 +85,13 @@ export class AppComponent implements OnInit{
 		}, time)
 	}
 
-	getStainglassImage() {
+	async getStainglassImage() {
 		let file = (<HTMLInputElement>document.getElementById('image-file')).files[0];
 		if (file == undefined || file == null) {
-			this.showImgMessage('Must select an image', 2000)
-			return
+			const imgPath = (<HTMLSelectElement>document.getElementById('sg-image-select')).value
+			const response = await fetch(imgPath);
+			const blob = await response.blob();
+			file = new File([blob], 'image.jpg', {type: blob.type});
 		}
 		this.distance = (<HTMLSelectElement>document.getElementById('sg-dist-algo')).value
 		this.sites = Number((<HTMLInputElement>document.getElementById('sites')).value)

@@ -69,8 +69,23 @@
 
 		<div class='image-control' id='input-controls'>
 			<div class='control'>
-				<span>Select an image: </span>
+				<span>Upload an image: </span>
 				<input id='image-file' type="file" accept=".png, .jpg, .jpeg" (change)="getStainglassImage()">
+			</div>
+
+			<div class='control'>
+				<span>Or choose an image: </span>
+				<select id='sg-image-select' (change)="getStainglassImage()">
+					<option selected value='../assets/monalisa.png'>Monalisa</option>
+					<option  value='../assets/chimp.png'>Chimp</option>
+					<option value='../assets/lenna.png'>Lenna</option>
+					<option value='../assets/mandelbrot.png'>Mandelbrot</option>
+					<option value='../assets/napoleon.jpg'>Napoleon</option>
+					<option value='../assets/owl.png'>Owl</option>
+					<option value='../assets/parrots.png'>Parrots</option>
+					<option value='../assets/pyramids.png'>Pyramids</option>
+					<option value='../assets/tree.png'>Tree</option>
+				</select>
 			</div>
 			
 			<div class='control'>
@@ -89,7 +104,7 @@
 
 			<div class='control'>
 				<span>Lines: </span>
-				<input id="sg-lines" checked type="checkbox" (change)="getStainglassImage()">
+				<input id="sg-lines" type="checkbox" (change)="getStainglassImage()">
 			</div>
 			
 			<div>
