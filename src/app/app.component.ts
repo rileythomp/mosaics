@@ -78,13 +78,17 @@ export class AppComponent implements OnInit{
 		})
 	}
 
+	showImgMessage(msg: string, time: number) {
+		this.imgWarning = msg;
+		setTimeout(() => {
+			this.imgWarning = ''
+		}, time)
+	}
+
 	getStainglassImage() {
 		let file = (<HTMLInputElement>document.getElementById('image-file')).files[0];
 		if (file == undefined || file == null) {
-			this.imgWarning = 'Must select an image';
-			setTimeout(() => {
-				this.imgWarning = ''
-			}, 2000)
+			this.showImgMessage('Must select an image', 2000)
 			return
 		}
 		this.distance = (<HTMLSelectElement>document.getElementById('sg-dist-algo')).value
@@ -92,11 +96,17 @@ export class AppComponent implements OnInit{
 		this.lines = (<HTMLInputElement>document.getElementById('sg-lines')).checked
 		let stainglass = (<HTMLSelectElement>document.getElementById('image-type')).value
 		document.getElementById('sg-loading').style.display = 'block'
-		this.imageService.getStainglassImage(stainglass, this.lines, this.sites, this.distance, file).subscribe((res) => {
-			var imgUrl = URL.createObjectURL(res);
-			this.showMedia(stainglass, imgUrl)
-			document.getElementById('sg-loading').style.display = 'none'
-		})
+		this.imageService.getStainglassImage(stainglass, this.lines, this.sites, this.distance, file).subscribe(
+			(res) => {
+				var imgUrl = URL.createObjectURL(res);
+				this.showMedia(stainglass, imgUrl)
+				document.getElementById('sg-loading').style.display = 'none'
+			}, 
+			(err) => {
+				this.showImgMessage('Image must be less than 1000px in height and width', 5000);
+				document.getElementById('sg-loading').style.display = 'none';
+			}
+		)
 	}
 
 	showMedia(type: string, imgUrl: string) {
