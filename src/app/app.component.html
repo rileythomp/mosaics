@@ -70,12 +70,12 @@
 		<div class='image-control' id='input-controls'>
 			<div class='control'>
 				<span>Upload an image: </span>
-				<input id='image-file' type="file" accept=".png, .jpg, .jpeg" (change)="getStainglassImage()">
+				<input id='image-file' type="file" accept=".png, .jpg, .jpeg" (change)="getStainglassImageInput()">
 			</div>
 
 			<div class='control'>
 				<span>Or choose an image: </span>
-				<select id='sg-image-select' (change)="getStainglassImage()">
+				<select id='sg-image-select' (change)="getStainglassImageSelect()">
 					<option selected value='../assets/monalisa.png'>Monalisa</option>
 					<option  value='../assets/chimp.png'>Chimp</option>
 					<option value='../assets/lenna.png'>Lenna</option>

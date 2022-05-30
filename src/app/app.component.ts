@@ -20,6 +20,7 @@ export class AppComponent implements OnInit{
 	sites = 100;
 	lines = true;
 	voronoi = 'voronoi';
+	imgFile = null;
 
 	splits = 3;
 	fractal = 'fractal';
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit{
 	ngOnInit() {
 		document.getElementById('video').style.display = 'none'
 		this.hideControls();
-		this.getStainglassImage()
+		this.getStainglassImageSelect()
 		document.getElementById('input-controls').style.display = 'inline-block'
 	}
 
@@ -85,20 +86,34 @@ export class AppComponent implements OnInit{
 		}, time)
 	}
 
-	async getStainglassImage() {
+	getStainglassImageInput() {
 		let file = (<HTMLInputElement>document.getElementById('image-file')).files[0];
 		if (file == undefined || file == null) {
-			const imgPath = (<HTMLSelectElement>document.getElementById('sg-image-select')).value
-			const response = await fetch(imgPath);
-			const blob = await response.blob();
-			file = new File([blob], 'image.jpg', {type: blob.type});
+			this.imgWarning = 'Could not find image'
+			setTimeout(() => {
+				this.imgWarning = '';
+			}, 5000)
+			return
 		}
+		this.imgFile = file
+		this.getStainglassImage()
+	}
+
+	async getStainglassImageSelect() {
+		const imgPath = (<HTMLSelectElement>document.getElementById('sg-image-select')).value
+		const response = await fetch(imgPath);
+		const blob = await response.blob();
+		this.imgFile = new File([blob], 'image.jpg', {type: blob.type});
+		this.getStainglassImage()
+	}
+
+	async getStainglassImage() {
 		this.distance = (<HTMLSelectElement>document.getElementById('sg-dist-algo')).value
 		this.sites = Number((<HTMLInputElement>document.getElementById('sites')).value)
 		this.lines = (<HTMLInputElement>document.getElementById('sg-lines')).checked
 		let stainglass = (<HTMLSelectElement>document.getElementById('image-type')).value
 		document.getElementById('sg-loading').style.display = 'block'
-		this.imageService.getStainglassImage(stainglass, this.lines, this.sites, this.distance, file).subscribe(
+		this.imageService.getStainglassImage(stainglass, this.lines, this.sites, this.distance, this.imgFile).subscribe(
 			(res) => {
 				var imgUrl = URL.createObjectURL(res);
 				this.showMedia(stainglass, imgUrl)
